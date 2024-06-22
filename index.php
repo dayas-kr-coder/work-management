@@ -2,12 +2,9 @@
 
 require('functions.php');
 // require('router.php');
+require('Database.php');
 
-$dsn = 'mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4';
+$db = new Database();
+$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
 
-$pdo = new PDO($dsn, 'root', 'dayas1981');
-
-$statement = $pdo->prepare("select * from posts;");
-$statement->execute();
-
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+dd($posts);
