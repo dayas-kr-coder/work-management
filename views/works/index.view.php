@@ -5,7 +5,7 @@
 
 <h1 class="text-3xl font-bold tracking-tight text-gray-900">Expense Tracker Details</h1>
 
-<a href="/works/create" class="rounded-md bg-indigo-600 px-3.5 py-2 text-sm text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+<a href="/work/create" class="rounded-md bg-indigo-600 px-3.5 py-2 text-sm text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
   <i class="fa-solid fa-plus mr-2"></i>
   <span>New Work</span>
 </a>

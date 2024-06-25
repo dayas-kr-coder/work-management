@@ -10,6 +10,7 @@ return  [
 
   // works
   '/works' => 'controllers/works/index.php',
-  '/works/create' => 'controllers/works/create.php',
   '/work' => 'controllers/works/show.php',
+  '/work/create' => 'controllers/works/create.php',
+  '/work/update' => 'controllers/works/update.php',
 ];
