@@ -12,7 +12,6 @@
   <span>Go Back</span>
 </a>
 
-<!-- Expense Tracker Details -->
 <h1 class="text-3xl text-gray-800"><?= $work['name'] ?></h1>
 
 <div class="flex items-center justify-between gap-x-4">
@@ -21,15 +20,32 @@
     <span>Update</span>
   </a>
 
+  <button id="openDeleteWarningModal" class="rounded-md px-3.5 py-2 text-sm text-red-500 bg-red-50 hover:bg-red-100 hover:text-red-600">
+    <i class="fa-solid fa-trash mr-1"></i>
+    <span>Delete</span>
+  </button>
 
-  <form method="POST">
-    <input type="hidden" name="_delete_work" id="_delete_work" value="<?= $work['id'] ?>">
-    <button class="rounded-md px-3.5 py-2 text-sm text-red-500 bg-red-50 hover:bg-red-100 hover:text-red-600">
-      <i class="fa-solid fa-trash mr-1"></i>
-      <span>Delete</span>
-    </button>
-  </form>
+  <?php require base_path('views/partials/works/delete-modal.php') ?>
+
 </div>
+
+<script>
+  const openDeleteWarningModal = document.getElementById(
+    "openDeleteWarningModal"
+  );
+  const DeleteWarningModal = document.getElementById("DeleteWarningModal");
+  const closeDeleteWarningModal = document.getElementById(
+    "closeDeleteWarningModal"
+  );
+
+  openDeleteWarningModal.addEventListener("click", () => {
+    DeleteWarningModal.classList.remove("hidden");
+  });
+
+  closeDeleteWarningModal.addEventListener("click", () => {
+    DeleteWarningModal.classList.add("hidden");
+  });
+</script>
 
 <?php require base_path('views/partials/banner/banner-end.php') ?>
 
@@ -77,7 +93,7 @@ $profit = $work['advance'] - $totalCost;
           </div>
           <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt class="text-sm font-medium leading-6 text-gray-950">Profit</dt>
-            <dd class="<?= ((int)$profit < 0) ? 'text-red-600' : 'text-green-600' ?> mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
+            <dd class="<?= ((int)$profit <= 0) ? 'text-red-600' : 'text-green-600' ?> mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">
               <?= $profit ?>
             </dd>
           </div>
