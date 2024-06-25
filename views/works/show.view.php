@@ -1,11 +1,11 @@
 <?php require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/nav.php') ?>
 
-<?php require base_path('views/partials/banner/banner-start.php') ?>
-
 <script>
   document.title = "Work: <?= htmlspecialchars($work['name'], ENT_QUOTES, 'UTF-8') ?>";
 </script>
+
+<?php require base_path('views/partials/banner/banner-start.php') ?>
 
 <a href="/works" class="rounded-md px-3.5 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600">
   <i class="fa-solid fa-angle-left mr-1"></i>
@@ -21,10 +21,14 @@
     <span>Update</span>
   </a>
 
-  <a href="/work/delete?id=<?= $work['id'] ?>" class="rounded-md px-3.5 py-2 text-sm text-red-500 bg-red-50 hover:bg-red-100 hover:text-red-600">
-    <i class="fa-solid fa-trash mr-1"></i>
-    <span>Delete</span>
-  </a>
+
+  <form method="POST">
+    <input type="hidden" name="_delete_work" id="_delete_work" value="<?= $work['id'] ?>">
+    <button class="rounded-md px-3.5 py-2 text-sm text-red-500 bg-red-50 hover:bg-red-100 hover:text-red-600">
+      <i class="fa-solid fa-trash mr-1"></i>
+      <span>Delete</span>
+    </button>
+  </form>
 </div>
 
 <?php require base_path('views/partials/banner/banner-end.php') ?>
