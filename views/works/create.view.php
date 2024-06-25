@@ -15,7 +15,7 @@
             <div class="sm:col-span-2">
               <label for="name" class="block relative text-sm font-medium leading-6 text-gray-900">Full Name <span class="text-red-500 font-bold font-mono absolute bottom-2 ml-1">*</span></label>
               <div class="mt-2">
-                <input id="name" name="name" type="text" autocomplete="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input id="name" name="name" type="text" value="<?= $_POST['name'] ?? '' ?>" autocomplete="name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 <?php if (isset($errors['name'])) : ?>
                   <p class="text-xs text-red-500 mt-2"><?= $errors['name'] ?></p>
                 <?php endif ?>
@@ -27,7 +27,7 @@
                 <span class="text-red-500 font-bold font-mono absolute bottom-2 ml-1">*</span>
               </label>
               <div class="mt-2">
-                <input id="advance" name="advance" type="number" autocomplete="advance" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input value="<?= $_POST['advance'] ?? '' ?>" id="advance" name="advance" type="number" autocomplete="advance" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 <?php if (isset($errors['advance'])) : ?>
                   <p class="text-xs text-red-500 mt-2"><?= $errors['advance'] ?></p>
                 <?php endif ?>
@@ -37,7 +37,7 @@
             <div class="sm:col-span-2">
               <label for="date" class="block text-sm font-medium leading-6 text-gray-900 relative">Date <span class="text-red-500 font-bold font-mono absolute bottom-2 ml-1">*</span></label>
               <div class="mt-2">
-                <input id="date" name="date" type="date" autocomplete="date" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input value="<?= $_POST['date'] ?? '' ?>" id="date" name="date" type="date" autocomplete="date" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 <?php if (isset($errors['date'])) : ?>
                   <p class="text-xs text-red-500 mt-2"><?= $errors['date'] ?></p>
                 <?php endif ?>

@@ -17,7 +17,7 @@
     <?php if (empty($works)) : ?>
       <p class="text-center text-lg mt-5 text-gray-600">No Works Found.</p>
     <?php else : ?>
-      <div class="relative overflow-x-auto mt-2 border border-gray-300 rounded-md">
+      <div class="relative overflow-x-auto mt-2 border border-gray-300 rounded-md mb-10">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 rounded-md overflow-hidden">
           <thead class="text-xs text-gray-700 uppercase bg-gray-200">
             <tr>
@@ -50,7 +50,7 @@
             ?>
               <tr class="bg-white border-b hover:bg-blue-50">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                  <a href="/work?id=<?= $work['id'] ?>" class="hover:underline"><?= htmlspecialchars($work['name']) ?></a>
+                  <a href="/work?id=<?= $work['id'] ?>" class="hover:text-blue-500 hover:underline"><?= htmlspecialchars($work['name']) ?></a>
                 </td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($work['date']) ?></td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($work['advance']) ?></td>

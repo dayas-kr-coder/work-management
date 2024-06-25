@@ -35,12 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
       'INSERT INTO expense_tracker (name, advance, taxi, labour, food, date) 
       VALUES (:name, :advance, :taxi, :labour, :food, :date)',
       [
-        'name' => $_POST['name'],
-        'advance' => $_POST['advance'],
-        'taxi' => $_POST['taxi'],
-        'labour' => $_POST['labour'],
-        'food' => $_POST['food'],
-        'date' => $_POST['date'],
+        ':name' => $_POST['name'],
+        ':advance' => $_POST['advance'],
+        ':taxi' => $_POST['taxi'],
+        ':labour' => $_POST['labour'],
+        ':food' => $_POST['food'],
+        ':date' => $_POST['date'],
       ]
     );
 
