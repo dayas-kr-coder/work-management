@@ -10,4 +10,5 @@ return  [
 
   // works
   '/works' => 'controllers/works/index.php',
+  '/works/create' => 'controllers/works/create.php',
 ];
