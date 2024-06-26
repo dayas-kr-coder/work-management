@@ -22,7 +22,7 @@
           <thead class="text-xs text-gray-700 uppercase bg-gray-200">
             <tr>
               <?php
-              $tableHeadings = ['Name', 'Date', 'Advance', 'Taxi', 'Labour', 'Food', 'Total', 'Balance'];
+              $tableHeadings = ['NO.', 'Name', 'Date', 'Mobile', 'Advance', 'Taxi', 'Labour', 'Food', 'Total',  'Balance'];
               foreach ($tableHeadings as $tableHeading) : ?>
                 <th scope="col" class="px-6 py-3 text-gray-800"><?= $tableHeading ?></th>
               <?php endforeach; ?>
@@ -37,7 +37,7 @@
             $total_total = 0;
             $total_balance = 0;
 
-            foreach ($works as $work) :
+            foreach ($works as $workIndex =>  $work) :
               $total = $work['advance'] + $work['taxi'] + $work['labour'] + $work['food'];
               $balance = $work['advance'] - ($work['taxi'] + $work['labour'] + $work['food']);
 
@@ -49,21 +49,37 @@
               $total_balance += $balance;
             ?>
               <tr class="bg-white border-b hover:bg-blue-50">
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                <td scope="row" class="px-6 py-4 text-gray-900 whitespace-nowrap" title="name"><?= $workIndex + 1 ?></td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" title="name">
                   <a href="/work?id=<?= $work['id'] ?>" class="hover:text-blue-500 hover:underline"><?= htmlspecialchars($work['name']) ?></a>
                 </td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($work['date']) ?></td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($work['advance']) ?></td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($work['taxi']) ?></td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($work['labour']) ?></td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($work['food']) ?></td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($total) ?></td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><?= htmlspecialchars($balance) ?></td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" title="date">
+                  <script>
+                    document.write(dayjs("<?= $work['date'] ?>").format('DD MMM YYYY'));
+                  </script>
+                </td>
+                <td scope="row" class="<?= empty($work['phone']) ? 'text-gray-500' : 'text-gray-900' ?> px-6 py-4 font-medium whitespace-nowrap" title="Call Now">
+                  <?= empty($work['phone']) ? 'N/A' : '<a href="tel:' . htmlspecialchars($work['phone']) . '">' . htmlspecialchars($work['phone']) . '</a>' ?>
+                </td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" title="advance"><?= htmlspecialchars($work['advance']) ?></td>
+                <td scope="row" class="<?= $work['taxi'] <= 0 ? 'text-gray-500' : 'text-gray-900' ?> px-6 py-4 font-medium whitespace-nowrap" title="taxi">
+                  <?= $work['taxi'] <= 0 ? 'N/A' : htmlspecialchars($work['taxi']) ?>
+                </td>
+                <td scope="row" class="<?= $work['labour'] <= 0 ? 'text-gray-500' : 'text-gray-900' ?> px-6 py-4 font-medium whitespace-nowrap" title="labour">
+                  <?= $work['labour'] <= 0 ? 'N/A' : htmlspecialchars($work['labour']) ?>
+                </td>
+                <td scope="row" class="<?= $work['food'] <= 0 ? 'text-gray-500' : 'text-gray-900' ?> px-6 py-4 font-medium whitespace-nowrap" title="food">
+                  <?= $work['food'] <= 0 ? 'N/A' : htmlspecialchars($work['food']) ?>
+                </td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" title="total"><?= htmlspecialchars($total) ?></td>
+                <td scope="row" class="<?= ((int)$balance <= 0) ? 'text-red-800' : 'text-gray-900' ?> px-6 py-4 font-medium whitespace-nowrap" title="balance">
+                  <?= htmlspecialchars($balance) ?>
+                </td>
               </tr>
             <?php endforeach; ?>
 
             <tr class="bg-gray-50">
-              <th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap" colspan="2">Totals</th>
+              <th scope="row" class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap" colspan="4">Totals</th>
               <th scope="row" class="px-6 py-4 font-medium text-blue-600 whitespace-nowrap"><?= htmlspecialchars($total_advance) ?></th>
               <th scope="row" class="px-6 py-4 font-medium text-red-600 whitespace-nowrap"><?= htmlspecialchars($total_taxi) ?></th>
               <th scope="row" class="px-6 py-4 font-medium text-red-600 whitespace-nowrap"><?= htmlspecialchars($total_labour) ?></th>
@@ -78,7 +94,6 @@
     <?php endif ?>
 
   </div>
-
 </main>
 
 <?php require base_path('views/partials/footer.php') ?>

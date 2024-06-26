@@ -57,7 +57,7 @@ $profit = $work['advance'] - $totalCost;
 <main>
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <div class="bg-white py-5 px-8 rounded-lg mt-2">
-      <div class="px-4 sm:px-0 ">
+      <div class="px-4 sm:px-0">
         <h3 class="text-base font-semibold leading-7 text-gray-900">Work Contract Information</h3>
         <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">details of Work Contract and Client.</p>
       </div>
@@ -85,7 +85,26 @@ $profit = $work['advance'] - $totalCost;
           </div>
           <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt class="text-sm font-medium leading-6 text-gray-950">Date</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-800 sm:col-span-2 sm:mt-0"><?= $work['date'] ?></dd>
+            <dd class="mt-1 text-sm leading-6 text-gray-800 sm:col-span-2 sm:mt-0">
+              <div class="flex items-center gap-x-2">
+                <span>
+                  <script>
+                    document.write(dayjs("<?= $work['date'] ?>").format('DD MMMM YYYY'));
+                  </script>
+                </span>
+                <span class="text-gray-500">
+                  <script>
+                    document.write(dayjs("<?= $work['date'] ?>").format('dddd'));
+                  </script>
+                </span>
+              </div>
+            </dd>
+          </div>
+          <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-950">Mobile Number</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-800 sm:col-span-2 sm:mt-0">
+              <a href="tel:<?= $work['phone'] ?>" class="hover:underline text-blue-500"><?= $work['phone'] ?></a>
+            </dd>
           </div>
           <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt class="text-sm font-medium leading-6 text-gray-950">Total Cost</dt>

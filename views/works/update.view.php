@@ -57,27 +57,24 @@
             <dt class="text-sm font-medium leading-6 text-gray-950">Taxi Charge</dt>
             <dd class="mt-1 text-sm leading-6 text-gray-800 sm:col-span-2 sm:mt-0">
               <input name="taxi" id="taxi" type="text" value="<?= $_POST['taxi'] ?? $work['taxi'] ?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-              <?php if (isset($errors['date'])) : ?>
-                <p class="text-xs text-red-500 mt-2"><?= $errors['date'] ?></p>
-              <?php endif ?>
             </dd>
           </div>
           <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt class="text-sm font-medium leading-6 text-gray-950">Labour Charge</dt>
             <dd class="mt-1 text-sm leading-6 text-gray-800 sm:col-span-2 sm:mt-0">
               <input name="labour" id="labour" type="text" value="<?= $_POST['labour'] ?? $work['labour'] ?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-              <?php if (isset($errors['labour'])) : ?>
-                <p class="text-xs text-red-500 mt-2"><?= $errors['labour'] ?></p>
-              <?php endif ?>
             </dd>
           </div>
           <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt class="text-sm font-medium leading-6 text-gray-950">Food Cost</dt>
             <dd class="mt-1 text-sm leading-6 text-gray-800 sm:col-span-2 sm:mt-0">
               <input name="food" id="food" type="text" value="<?= $_POST['food'] ?? $work['food'] ?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-              <?php if (isset($errors['food'])) : ?>
-                <p class="text-xs text-red-500 mt-2"><?= $errors['food'] ?></p>
-              <?php endif ?>
+            </dd>
+          </div>
+          <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-950">Phone Number</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-800 sm:col-span-2 sm:mt-0">
+              <input name="phone" id="phone" type="number" value="<?= $_POST['phone'] ?? $work['phone'] ?>" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
             </dd>
           </div>
           <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

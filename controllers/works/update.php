@@ -34,6 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     $errors['date'] = 'Please select a date.';
   }
 
+  if (empty($_POST['phone'])) {
+    $_POST['phone'] = null;
+  }
+
   if (empty($errors)) {
     $db->query(
       'UPDATE expense_tracker SET 
@@ -42,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         taxi = :taxi,
         labour = :labour,
         food = :food,
+        phone = :phone,
         date = :date
       WHERE id = :id',
       [
@@ -50,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         ':taxi' => $_POST['taxi'],
         ':labour' => $_POST['labour'],
         ':food' => $_POST['food'],
+        ':phone' => $_POST['phone'],
         ':date' => $_POST['date'],
         ':id' => $_GET['id'],
       ]

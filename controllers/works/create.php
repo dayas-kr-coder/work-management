@@ -29,11 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
   if (empty($_POST['date'])) {
     $errors['date'] = 'Please select a date.';
   }
+  if (empty($_POST['phone'])) {
+    $_POST['phone'] = null;
+  }
 
   if (empty($errors)) {
     $db->query(
-      'INSERT INTO expense_tracker (name, advance, taxi, labour, food, date) 
-      VALUES (:name, :advance, :taxi, :labour, :food, :date)',
+      'INSERT INTO expense_tracker (name, advance, taxi, labour, food, date, phone) 
+      VALUES (:name, :advance, :taxi, :labour, :food, :date, :phone)',
       [
         ':name' => $_POST['name'],
         ':advance' => $_POST['advance'],
@@ -41,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         ':labour' => $_POST['labour'],
         ':food' => $_POST['food'],
         ':date' => $_POST['date'],
+        ':phone' => $_POST['phone'],
       ]
     );
 
