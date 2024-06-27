@@ -10,7 +10,7 @@ class Database
 
   public $statement;
 
-  public function __construct($config, $username = 'root', $password = 'dayas1981')
+  public function __construct($config, $username = 'root', $password = '1234')
   {
     $dsn = 'mysql:' . http_build_query($config, '', ';');
 
@@ -41,6 +41,17 @@ class Database
   public function findOrFail()
   {
     $result = $this->find();
+
+    if (!$result) {
+      abort();
+    }
+
+    return $result;
+  }
+
+  public function getOrFail()
+  {
+    $result = $this->get();
 
     if (!$result) {
       abort();

@@ -3,7 +3,7 @@
 
 <!-- form method="POST" -->
 <script>
-  document.title = "Update: <?= htmlspecialchars($work['name'], ENT_QUOTES, 'UTF-8') ?>";
+  document.title = "Edit: <?= htmlspecialchars($work['name'], ENT_QUOTES, 'UTF-8') ?>";
 </script>
 
 <form method="POST">
@@ -13,27 +13,23 @@
     <span>Go Back</span>
   </a>
 
-  <h1 class="text-3xl text-gray-800">Update (<?= $work['name'] ?>)</h1>
+  <h1 class="text-3xl text-gray-800">Edit (<?= $work['name'] ?>)</h1>
 
   <div class="flex items-center justify-between gap-x-4">
-    <a href="/work?id=<?= $work['id'] ?>" class="rounded-md px-3.5 py-2 text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 hover:text-gray-800">
-      <i class="fa-solid fa-xmark mr-2"></i>
-      <span>Cancel</span>
+    <a href="/work?id=<?= $work['id'] ?>" class="px-3 py-[5px] bg-gray-100 hover:bg-gray-200 flex items-center justify-center   rounded-lg text-gray-500 hover:text-gray-700 text-sm" title="Update <?= $work["name"] ?>">
+      <i class="fa-solid fa-xmark text-lg mr-2"></i> Cancel
     </a>
-    <button type="submit" class="rounded-md px-7 py-2 text-sm text-green-800 bg-green-200 hover:bg-green-300 hover:text-green-900">Save</button>
+
+    <button type="submit" class="px-3 py-[5px] bg-green-200 hover:bg-green-300 flex items-center justify-center   rounded-lg text-green-700 hover:text-green-900 text-sm" title="Update <?= $work["name"] ?>">
+      <i class="fa-solid fa-check text-lg mr-2"></i> Update
+    </button>
   </div>
 
   <?php require base_path('views/partials/banner/banner-end.php') ?>
 
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
     <div class="bg-white py-5 px-8 rounded-lg mt-2">
-      <div class="px-4 sm:px-0 flex items-top justify-between">
-        <div>
-          <h3 class="text-base font-semibold leading-7 text-gray-900">Update Work Contract Information</h3>
-          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Please update the details of the Work Contract and Client.</p>
-        </div>
-      </div>
-      <div class="mt-8 border-t border-gray-100">
+      <div>
         <dl class="divide-y divide-gray-100">
           <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt class="text-sm font-medium leading-6 text-gray-950">Full name</dt>

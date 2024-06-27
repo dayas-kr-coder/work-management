@@ -8,12 +8,12 @@
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class="<?= urlIs('/') ?  'border-indigo-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium" aria-current="page">Home</a>
+            <a href="/" class="<?= urlIs('/') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium" aria-current="page">Home</a>
 
-            <a href="/about" class="<?= urlIs('/about') ?  'border-indigo-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">About</a>
+            <a href="/about" class="<?= urlIs('/about') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">About</a>
 
-            <a href="/works" class="<?= urlIs('/works') ?  'border-indigo-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">Works</a>
-            <a href="/contact" class="<?= urlIs('/contact') ?  'border-indigo-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">Contact</a>
+            <a href="/works" class="<?= urlIs('/works') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">Works</a>
+            <a href="/contact" class="<?= urlIs('/contact') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">Contact</a>
           </div>
         </div>
       </div>

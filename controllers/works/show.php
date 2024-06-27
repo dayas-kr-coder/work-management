@@ -8,7 +8,7 @@ $errors = [];
 
 $work = $db->query("select * from expense_tracker where id = :id", [
   ":id" => $_GET['id']
-])->find();
+])->findOrFail();
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
   if (empty($errors)) {
@@ -17,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     ]);
 
     redirect('/works');
+  } else {
+    abort();
   }
 }
 

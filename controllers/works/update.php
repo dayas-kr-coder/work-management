@@ -11,6 +11,10 @@ $work = $db->query("select * from expense_tracker where id = :id", [
   ":id" => $_GET['id']
 ])->find();
 
+if (!$work) {
+  abort();
+}
+
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
   if (!Validator::string($_POST['name'], 3, 255)) {
     $errors['name'] = 'A name of no more than 255 characters is required.';

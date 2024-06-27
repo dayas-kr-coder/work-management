@@ -89,7 +89,7 @@
 
       <div class="mt-6 grid gap-x-4 gap-y-3 sm:flex sm:items-center sm:justify-end">
         <a href="/works" class="bg-gray-200 order-2 sm:order-1 sm:w-fit w-full rounded-md bg-transparent text-center px-5 py-2 text-sm font-semibold hover:bg-gray-200 text-gray-900">Cancel</a>
-        <button type="submit" class="order-1 sm:order-2 sm:w-fit w-full rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+        <button type="submit" class="order-1 sm:order-2 sm:w-fit w-full rounded-md bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save</button>
       </div>
 
 
