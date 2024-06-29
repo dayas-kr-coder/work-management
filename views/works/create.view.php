@@ -4,7 +4,7 @@
 
 <main>
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <form method="POST">
+    <form method="POST" action="/works">
       <div class="space-y-12">
         <div class="border-b border-gray-900/10 pb-12">
           <h2 class="text-base font-semibold leading-7 text-gray-900">Work Details</h2>
@@ -91,8 +91,6 @@
         <a href="/works" class="bg-gray-200 order-2 sm:order-1 sm:w-fit w-full rounded-md bg-transparent text-center px-5 py-2 text-sm font-semibold hover:bg-gray-200 text-gray-900">Cancel</a>
         <button type="submit" class="order-1 sm:order-2 sm:w-fit w-full rounded-md bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save</button>
       </div>
-
-
 
     </form>
   </div>

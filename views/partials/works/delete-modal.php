@@ -19,7 +19,7 @@
     <button id="closeDeleteWarningModal" class="bg-gray-50 border border-gray-200 hover:bg-gray-100 py-1.5 rounded-md px-4 text-sm">Cancel</button>
     <form method="POST">
       <input type="hidden" name="_method" value="DELETE">
-      <input type="hidden" name="_delete_work" id="_delete_work" value="<?= $work["id"] ?>">
+      <input type="hidden" name="id" id="id" value="<?= $work["id"] ?>">
       <button type="submit" class="bg-red-600 hover:bg-red-700 py-1.5 rounded-md px-4 text-white text-sm">
         <span>Delete</span>
       </button>
