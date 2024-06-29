@@ -48,15 +48,4 @@ class Database
 
     return $result;
   }
-
-  public function getOrFail()
-  {
-    $result = $this->get();
-
-    if (!$result) {
-      abort();
-    }
-
-    return $result;
-  }
 }

@@ -15,4 +15,9 @@ class Validator
   {
     return filter_var($value, FILTER_VALIDATE_EMAIL);
   }
+
+  public static function required($value)
+  {
+    return !empty(trim($value));
+  }
 }

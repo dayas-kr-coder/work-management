@@ -13,7 +13,8 @@ $work = $db->query("select * from work_details where id = :id", [
 
 authorize($work['user_id'] === $currentUserId);
 
-view('works/show.view.php', [
-  'heading' => 'Work',
-  'work' => $work,
+$db->query("DELETE FROM work_details WHERE id = :id", [
+  ':id' => $_POST['id'],
 ]);
+
+redirect('/works');

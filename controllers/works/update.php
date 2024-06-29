@@ -7,7 +7,7 @@ $config = require base_path('config.php');
 $db = new Database($config['database']);
 $errors = [];
 
-$work = $db->query("select * from expense_tracker where id = :id", [
+$work = $db->query("SELECT * FROM work_details WHERE id = :id", [
   ":id" => $_GET['id']
 ])->find();
 
@@ -28,9 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
   }
 
   // taxi, labour, food, can be zero if empty
-  foreach (['taxi', 'labour', 'food'] as $field_3) {
-    if (empty($_POST[$field_3])) {
-      $_POST[$field_3] = 0;
+  foreach (['taxi', 'labour', 'food'] as $field) {
+    if (empty($_POST[$field])) {
+      $_POST[$field] = 0;
     }
   }
 
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
   if (empty($errors)) {
     $db->query(
-      'UPDATE expense_tracker SET 
+      'UPDATE work_details SET 
         name = :name,
         advance = :advance,
         taxi = :taxi,

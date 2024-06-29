@@ -3,7 +3,7 @@
     <select id="filter" name="filter" class="max-w-[8rem] text-gray-500 py-1.5 px-3 pe-9 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-600 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none" onchange="toggleSearchInput()">
       <option selected>Filter By</option>
       <?php foreach ($filterOptions as $filterOption) : ?>
-        <?php if ($filterOption !== 'id') : ?>
+        <?php if ($filterOption !== 'id' && $filterOption !== 'user_id') : ?>
           <option value="<?= htmlspecialchars($filterOption) ?>" <?= ($_GET['filter'] ?? '') === $filterOption ? 'selected' : '' ?>>
             <?= htmlspecialchars($filterOption) ?>
           </option>
