@@ -6,7 +6,7 @@ $router->get('/about', 'controllers/about.php');
 $router->get('/contact', 'controllers/contact.php');
 
 // Work routes
-$router->get('/works', 'controllers/works/index.php');
+$router->get('/works', 'controllers/works/index.php')->only('auth');
 $router->post('/works', 'controllers/works/store.php');
 
 $router->get('/works/show', 'controllers/works/show.php');
@@ -16,5 +16,5 @@ $router->get('/works/edit', 'controllers/works/edit.php');
 $router->patch('/works/update', 'controllers/works/update.php');
 $router->delete('/works/destroy', 'controllers/works/destroy.php');
 
-$router->get('/register', 'controllers/registration/create.php');
+$router->get('/register', 'controllers/registration/create.php')->only('guest');
 $router->post('/register', 'controllers/registration/store.php');
