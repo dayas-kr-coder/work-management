@@ -1,7 +1,6 @@
 <?php require('partials/head.php') ?>
-<?php require('partials/nav.php') ?>
 
-<div class="fixed top-16 w-full bottom-0">
+<div class="fixed top-0 w-full left-0 h-screen">
   <main class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8 my-auto">
     <div class="text-center">
       <p class="text-base font-semibold text-red-600">403</p>

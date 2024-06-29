@@ -15,7 +15,7 @@
 <h1 class="text-3xl text-gray-800 fond-bold"><?= $work["name"] ?></h1>
 
 <div class="flex items-center justify-between gap-x-4">
-  <a href="/work/update?id=<?= $work["id"] ?>" class="size-10 bg-blue-50 hover:bg-blue-100 flex items-center justify-center  rounded-lg px-6 text-blue-500 hover:text-blue-600 text-sm" title="Update <?= $work["name"] ?>">
+  <a href="/work/edit?id=<?= $work["id"] ?>" class="size-10 bg-blue-50 hover:bg-blue-100 flex items-center justify-center  rounded-lg px-6 text-blue-500 hover:text-blue-600 text-sm" title="Update <?= $work["name"] ?>">
     <i class="fa-solid fa-pen-to-square text-lg"></i>
   </a>
 

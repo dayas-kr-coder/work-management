@@ -9,6 +9,9 @@ $router->get('/contact', 'controllers/contact.php');
 $router->get('/works', 'controllers/works/index.php');
 $router->post('/works', 'controllers/works/store.php');
 
+$router->get('/work/edit', 'controllers/works/edit.php');
+$router->patch('/work', 'controllers/works/update.php');
+
 $router->get('/work', 'controllers/works/show.php');
 $router->delete('/work', 'controllers/works/destroy.php');
 $router->get('/work/create', 'controllers/works/create.php');
