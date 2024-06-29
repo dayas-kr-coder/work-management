@@ -12,5 +12,3 @@ $router->post('/works', 'controllers/works/store.php');
 $router->get('/work', 'controllers/works/show.php');
 $router->delete('/work', 'controllers/works/destroy.php');
 $router->get('/work/create', 'controllers/works/create.php');
-
-$router->get('/work/update', 'controllers/works/update.php');
