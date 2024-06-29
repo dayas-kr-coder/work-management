@@ -15,3 +15,6 @@ $router->get('/works/edit', 'controllers/works/edit.php');
 
 $router->patch('/works/update', 'controllers/works/update.php');
 $router->delete('/works/destroy', 'controllers/works/destroy.php');
+
+$router->get('/register', 'controllers/registration/create.php');
+$router->post('/register', 'controllers/registration/store.php');

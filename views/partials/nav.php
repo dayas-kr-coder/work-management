@@ -23,11 +23,12 @@
           <!-- Profile dropdown -->
           <div class="relative ml-3">
             <div>
-              <button type="button" class="relative flex max-w-xs items-center rounded-full bg-indigo-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">Open user menu</span>
+              <?php if ($_SESSION['user'] ?? false) : ?>
                 <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-              </button>
+              <?php else : ?>
+                <a href="/login" class="hover:bg-gray-200 text-gray-700 hover:text-blue-500 font-semibold text-sm px-4 py-1.5 rounded-md">Login</a>
+                <a href="/register" class="hover:bg-gray-200 text-gray-700 hover:text-blue-500 font-semibold text-sm px-4 py-1.5 rounded-md">Register</a>
+              <?php endif ?>
             </div>
           </div>
         </div>
