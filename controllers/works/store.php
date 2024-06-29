@@ -1,12 +1,14 @@
 <?php
 
+use Core\App;
 use Core\Database;
 use Core\Validator;
 
-$config = require base_path('config.php');
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
 
 $errors = [];
+
+$currentUserId = 1;
 
 if (!Validator::string($_POST['name'], 3, 255)) {
   $errors['name'] = 'A name of no more than 255 characters is required.';
@@ -38,20 +40,21 @@ if (!empty($errors)) {
     'heading' => 'Create Work',
     'errors' => $errors
   ]);
-} else {
-  $db->query(
-    'INSERT INTO expense_tracker (name, advance, taxi, labour, food, date, phone) 
-        VALUES (:name, :advance, :taxi, :labour, :food, :date, :phone)',
-    [
-      ':name' => $_POST['name'],
-      ':advance' => $_POST['advance'],
-      ':taxi' => $_POST['taxi'],
-      ':labour' => $_POST['labour'],
-      ':food' => $_POST['food'],
-      ':date' => $_POST['date'],
-      ':phone' => $_POST['phone'],
-    ]
-  );
-
-  redirect('/works');
 }
+
+$db->query(
+  'INSERT INTO work_details (name, advance, taxi, labour, food, date, phone, user_id) 
+   VALUES (:name, :advance, :taxi, :labour, :food, :date, :phone, :user_id)',
+  [
+    ':name' => $_POST['name'],
+    ':advance' => $_POST['advance'],
+    ':taxi' => $_POST['taxi'],
+    ':labour' => $_POST['labour'],
+    ':food' => $_POST['food'],
+    ':date' => $_POST['date'],
+    ':phone' => $_POST['phone'],
+    ':user_id' => $currentUserId
+  ]
+);
+
+redirect('/works');

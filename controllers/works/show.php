@@ -1,14 +1,17 @@
 <?php
 
+use Core\App;
 use Core\Database;
 
-$config = require base_path('config.php');
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
 
-$work = $db->query("select * from expense_tracker where id = :id", [
-  ":id" => $_GET['id']
+$currentUserId = 1;
+
+$work = $db->query("select * from work_details where id = :id", [
+  ':id' => $_GET['id']
 ])->findOrFail();
 
+authorize($work['user_id'] === $currentUserId);
 
 view('works/show.view.php', [
   'heading' => 'Work',

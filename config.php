@@ -4,7 +4,7 @@ return [
   'database' => [
     'host' => 'localhost',
     'port' => 3306,
-    'dbname' => 'expense_tracker',
+    'dbname' => 'work',
     'charset' => 'utf8mb4',
   ]
 ];

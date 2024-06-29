@@ -1,23 +1,25 @@
 <?php
 
+use Core\App;
 use Core\Database;
 
-$config = require base_path('config.php');
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
 
 $errors = [];
+
+$currentUserId = 1;
+
 $search = $_GET['search'] ?? '';
 $filter = $_GET['filter'] ?? '';
 $date = $_GET['date'] ?? '';
 $searchQuery = '%' . $search . '%';
 
-$filterOptionsResult = $db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'expense_tracker' AND TABLE_NAME = 'expense_tracker'")->get();
+$filterOptionsResult = $db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'work' AND TABLE_NAME = 'work_details'")->get();
 $filterOptions = array_column($filterOptionsResult, 'COLUMN_NAME');
 
 if ($filter && !in_array($filter, $filterOptions)) {
   $filter = ''; // Reset filter if it's not valid
 }
-
 
 if (isset($_GET['submit_button'])) {
   if ($filter === 'date' && $date === '') {
@@ -25,25 +27,30 @@ if (isset($_GET['submit_button'])) {
   }
 }
 
+// Fetch works based on conditions
+if ($filter === 'date' && $date !== '' && empty($errors)) {
+  authorize($currentUserId === 1); // Ensure current user is authorized
 
-if ($filter === 'date' && $date !== '') {
-  if (empty($errors)) {
-    $works = $db->query("SELECT * FROM expense_tracker WHERE (name LIKE ? OR phone LIKE ? OR advance LIKE ?) AND date = ?", [
-      $searchQuery, $searchQuery, $searchQuery, $date
-    ])->get();
-  }
-} else if ($search) {
+  $works = $db->query("SELECT * FROM work_details WHERE (name LIKE ? OR phone LIKE ? OR advance LIKE ?) AND date = ? AND user_id = ?", [
+    $searchQuery, $searchQuery, $searchQuery, $date, $currentUserId
+  ])->get();
+} elseif ($search) {
   if ($filter === '') {
-    $works = $db->query("SELECT * FROM expense_tracker WHERE name LIKE ? OR date LIKE ? OR phone LIKE ? OR advance LIKE ?", [
-      $searchQuery, $searchQuery, $searchQuery, $searchQuery
+    $works = $db->query("SELECT * FROM work_details WHERE (name LIKE ? OR date LIKE ? OR phone LIKE ? OR advance LIKE ?) AND user_id = ?", [
+      $searchQuery, $searchQuery, $searchQuery, $searchQuery, $currentUserId
     ])->get();
   } else {
-    $query = "SELECT * FROM expense_tracker WHERE $filter LIKE ?";
-    $works = $db->query($query, [$searchQuery])->get();
+    authorize($currentUserId === 1);
+
+    $query = "SELECT * FROM work_details WHERE $filter LIKE ? AND user_id = ?";
+    $works = $db->query($query, [$searchQuery, $currentUserId])->get();
   }
 } else {
-  $works = $db->query("SELECT * FROM expense_tracker")->get();
+  $works = $db->query("SELECT * FROM work_details WHERE user_id = ?", [
+    $currentUserId
+  ])->get();
 }
+
 
 view('works/index.view.php', [
   'heading' => 'All Works',
