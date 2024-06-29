@@ -1,21 +1,20 @@
 <?php
 
+use Core\App;
 use Core\Database;
 
-$config = require base_path('config.php');
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
+
+$errors = [];
 
 $currentUserId = 1;
 
-$errors = [];
 $search = $_GET['search'] ?? '';
 $filter = $_GET['filter'] ?? '';
 $date = $_GET['date'] ?? '';
 $searchQuery = '%' . $search . '%';
 
-$filterOptionsResult = $db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ? AND TABLE_NAME = 'work_details'", [
-  $config['database']['dbname']
-])->get();
+$filterOptionsResult = $db->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'work' AND TABLE_NAME = 'work_details'")->get();
 $filterOptions = array_column($filterOptionsResult, 'COLUMN_NAME');
 
 if ($filter && !in_array($filter, $filterOptions)) {

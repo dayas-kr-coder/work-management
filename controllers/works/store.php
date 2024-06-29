@@ -1,14 +1,14 @@
 <?php
 
+use Core\App;
 use Core\Database;
 use Core\Validator;
 
-$config = require base_path('config.php');
-$db = new Database($config['database']);
-
-$currentUserId = 1;
+$db = App::resolve(Database::class);
 
 $errors = [];
+
+$currentUserId = 1;
 
 if (!Validator::string($_POST['name'], 3, 255)) {
   $errors['name'] = 'A name of no more than 255 characters is required.';
