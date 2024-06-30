@@ -9,10 +9,12 @@
           <div class="ml-10 flex items-baseline space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="/" class="<?= urlIs('/') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium" aria-current="page">Home</a>
-
             <a href="/about" class="<?= urlIs('/about') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">About</a>
 
-            <a href="/works" class="<?= urlIs('/works') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">Works</a>
+            <?php if ($_SESSION['user'] ?? false) : ?>
+              <a href="/works" class="<?= urlIs('/works') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">Works</a>
+            <?php endif ?>
+
             <a href="/contact" class="<?= urlIs('/contact') ?  'border-blue-500 text-gray-900' :  'border-transparent text-gray-800 hover:border-gray-300 hover:text-gray-900' ?> border-b-2 px-3 py-5 text-sm font-medium">Contact</a>
           </div>
         </div>
@@ -21,16 +23,27 @@
         <div class="ml-4 flex items-center md:ml-6">
 
           <!-- Profile dropdown -->
-          <div class="relative ml-3">
-            <div>
-              <?php if ($_SESSION['user'] ?? false) : ?>
-                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-              <?php else : ?>
-                <a href="/login" class="hover:bg-gray-200 text-gray-700 hover:text-blue-500 font-semibold text-sm px-4 py-1.5 rounded-md">Login</a>
-                <a href="/register" class="hover:bg-gray-200 text-gray-700 hover:text-blue-500 font-semibold text-sm px-4 py-1.5 rounded-md">Register</a>
-              <?php endif ?>
-            </div>
+          <div class="ml-3">
+            <?php if ($_SESSION['user'] ?? false) : ?>
+              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <?php else : ?>
+              <a href="/register" class="hover:bg-gray-200 text-gray-700 hover:text-blue-500 font-semibold text-sm px-4 py-1.5 rounded-md">Register</a>
+              <a href="/login" class="hover:bg-gray-200 text-gray-700 hover:text-blue-500 font-semibold text-sm px-4 py-1.5 rounded-md">Log In</a>
+            <?php endif ?>
           </div>
+
+          <div class="ml-3">
+            <?php if ($_SESSION['user'] ?? false) : ?>
+              <form action="/session" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+
+                <button type="submit" class="hover:bg-gray-200 text-gray-700 hover:text-red-500 font-semibold text-sm px-4 py-1.5 rounded-md">
+                  Log Out
+                </button>
+              </form>
+            <?php endif ?>
+          </div>
+
         </div>
       </div>
       <div class="-mr-2 flex md:hidden">
