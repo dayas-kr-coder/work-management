@@ -1,24 +1,24 @@
 <?php
 
 // Home and static pages
-$router->get('/', 'controllers/index.php');
-$router->get('/about', 'controllers/about.php');
-$router->get('/contact', 'controllers/contact.php');
+$router->get('/', 'index.php');
+$router->get('/about', 'about.php');
+$router->get('/contact', 'contact.php');
 
 // Work routes
-$router->get('/works', 'controllers/works/index.php')->only('auth');
-$router->post('/works', 'controllers/works/store.php')->only('auth');
+$router->get('/works', 'works/index.php')->only('auth');
+$router->post('/works', 'works/store.php')->only('auth');
 
-$router->get('/work', 'controllers/works/show.php')->only('auth');
-$router->get('/work/create', 'controllers/works/create.php')->only('auth');
-$router->get('/work/edit', 'controllers/works/edit.php')->only('auth');
+$router->get('/work', 'works/show.php')->only('auth');
+$router->get('/work/create', 'works/create.php')->only('auth');
+$router->get('/work/edit', 'works/edit.php')->only('auth');
 
-$router->patch('/work/update', 'controllers/works/update.php')->only('auth');
-$router->delete('/work', 'controllers/works/destroy.php')->only('auth');
+$router->patch('/work/update', 'works/update.php')->only('auth');
+$router->delete('/work', 'works/destroy.php')->only('auth');
 
-$router->get('/register', 'controllers/registration/create.php')->only('guest');
-$router->post('/register', 'controllers/registration/store.php')->only('guest');
+$router->get('/register', 'registration/create.php')->only('guest');
+$router->post('/register', 'registration/store.php')->only('guest');
 
-$router->get('/login', 'controllers/session/create.php')->only('guest');
-$router->post('/session', 'controllers/session/store.php')->only('guest');
-$router->delete('/session', 'controllers/session/destroy.php')->only('auth');
+$router->get('/login', 'session/create.php')->only('guest');
+$router->post('/session', 'session/store.php')->only('guest');
+$router->delete('/session', 'session/destroy.php')->only('auth');
