@@ -7,7 +7,7 @@ $db = App::resolve(Database::class);
 
 $errors = [];
 
-$currentUserId = 1;
+$currentUserId = $_SESSION['user']['id'];
 
 $search = $_GET['search'] ?? '';
 $filter = $_GET['filter'] ?? '';

@@ -7,14 +7,14 @@ $router->get('/contact', 'controllers/contact.php');
 
 // Work routes
 $router->get('/works', 'controllers/works/index.php')->only('auth');
-$router->post('/works', 'controllers/works/store.php');
+$router->post('/works', 'controllers/works/store.php')->only('auth');
 
-$router->get('/works/show', 'controllers/works/show.php');
-$router->get('/works/create', 'controllers/works/create.php');
-$router->get('/works/edit', 'controllers/works/edit.php');
+$router->get('/work', 'controllers/works/show.php')->only('auth');
+$router->get('/work/create', 'controllers/works/create.php')->only('auth');
+$router->get('/work/edit', 'controllers/works/edit.php')->only('auth');
 
-$router->patch('/works/update', 'controllers/works/update.php');
-$router->delete('/works/destroy', 'controllers/works/destroy.php');
+$router->patch('/work/update', 'controllers/works/update.php')->only('auth');
+$router->delete('/work', 'controllers/works/destroy.php')->only('auth');
 
 $router->get('/register', 'controllers/registration/create.php')->only('guest');
 $router->post('/register', 'controllers/registration/store.php')->only('guest');

@@ -5,7 +5,7 @@ use Core\Database;
 
 $db = App::resolve(Database::class);
 
-$currentUserId = 1;
+$currentUserId = $_SESSION['user']['id'];
 
 $work = $db->query("select * from work_details where id = :id", [
   ':id' => $_GET['id']

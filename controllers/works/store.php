@@ -8,7 +8,7 @@ $db = App::resolve(Database::class);
 
 $errors = [];
 
-$currentUserId = 1;
+$currentUserId = $_SESSION['user']['id'];
 
 if (!Validator::string($_POST['name'], 3, 255)) {
   $errors['name'] = 'A name of no more than 255 characters is required.';

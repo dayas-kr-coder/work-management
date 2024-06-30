@@ -54,6 +54,7 @@ function redirect($path)
 function login($user)
 {
   $_SESSION['user'] = [
+    'id' => $user['id'],
     'email' => $user['email']
   ];
 
