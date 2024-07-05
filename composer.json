@@ -1,0 +1,16 @@
+{
+  "name": "dayas/demo",
+  "authors": [
+    {
+      "name": "dayas-kr-coder",
+      "email": "dayaskr2005@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Core\\": "Core/",
+      "Http\\": "Http/"
+    }
+  }
+}
